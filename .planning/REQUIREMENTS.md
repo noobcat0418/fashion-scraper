@@ -81,13 +81,39 @@ Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| — | — | — |
+| SCRAPE-01 | Phase 1 | Pending |
+| SCRAPE-02 | Phase 1 | Pending |
+| SCRAPE-03 | Phase 1 | Pending |
+| SCRAPE-04 | Phase 1 | Pending |
+| SCRAPE-05 | Phase 1 | Pending |
+| SCRAPE-06 | Phase 1 | Pending |
+| NORM-01 | Phase 2 | Pending |
+| NORM-02 | Phase 2 | Pending |
+| NORM-03 | Phase 2 | Pending |
+| NORM-04 | Phase 2 | Pending |
+| NORM-05 | Phase 2 | Pending |
+| DATA-01 | Phase 2 | Pending |
+| DATA-02 | Phase 2 | Pending |
+| DATA-03 | Phase 2 | Pending |
+| DATA-04 | Phase 2 | Pending |
+| SCORE-01 | Phase 3 | Pending |
+| SCORE-02 | Phase 3 | Pending |
+| SCORE-03 | Phase 3 | Pending |
+| SCORE-04 | Phase 3 | Pending |
+| TRACK-01 | Phase 4 | Pending |
+| TRACK-02 | Phase 4 | Pending |
+| TRACK-03 | Phase 4 | Pending |
+| TRACK-04 | Phase 4 | Pending |
+| TRACK-05 | Phase 4 | Pending |
+| ARCH-01 | Phase 1 | Pending |
+| ARCH-02 | Phase 4 | Pending |
+| ARCH-03 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 25 total
-- Mapped to phases: 0
-- Unmapped: 25 ⚠️
+- v1 requirements: 27 total
+- Mapped to phases: 27
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-02*
-*Last updated: 2026-03-02 after initial definition*
+*Last updated: 2026-03-02 after roadmap creation*
