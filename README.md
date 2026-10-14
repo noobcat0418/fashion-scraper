@@ -33,6 +33,9 @@ start out\board.html
 | `board` | Write `out/board.html` and `out/products.csv` from the database |
 | `run` | `scrape`, `score`, then `board` (`--no-score` to skip the AI step) |
 
+Add a store by appending to `retailers.json` (`key`, `name`, `domain`, `currency`, optional `include`/`exclude` keywords,
+matched as whole words so `men` never matches `women`).
+
 ## AI scoring
 
 Each product is rated 1–10 on **material, versatility, trend and value** by a local model
@@ -49,9 +52,6 @@ It takes about 5 seconds per product on a laptop CPU.
   and a forged closing tag is neutralised.
 - **Any OpenAI-compatible model works.** Set `LLM_BASE_URL`, `LLM_MODEL` and `LLM_API_KEY` in `.env`.
   The 3B default ranks sensibly but often gives similar items the same score; a 7B+ model separates them better.
-
-Add a store by appending to `retailers.json` (`key`, `name`, `domain`, `currency`, optional `include`/`exclude` keywords,
-matched as whole words so `men` never matches `women`).
 
 ## Being a good citizen
 
