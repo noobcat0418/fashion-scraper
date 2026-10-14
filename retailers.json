@@ -1,0 +1,16 @@
+[
+  {
+    "key": "taylorstitch",
+    "name": "Taylor Stitch",
+    "domain": "www.taylorstitch.com",
+    "currency": "USD",
+    "exclude": ["gift card", "women", "womens"]
+  },
+  {
+    "key": "outerknown",
+    "name": "Outerknown",
+    "domain": "www.outerknown.com",
+    "currency": "USD",
+    "exclude": ["gift card", "women", "womens"]
+  }
+]

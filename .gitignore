@@ -2,3 +2,13 @@
 CLAUDE.md
 .planning/
 node_modules/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Local data: scraped product data stays on this machine
+.env
+out/
+*.db
