@@ -1,0 +1,14 @@
+{
+  "weights": {
+    "material": 3,
+    "versatility": 2,
+    "trend": 2,
+    "value": 3
+  },
+  "criteria": {
+    "material": "Quality and durability of the fabric. Natural, organic or premium fibres (linen, merino, organic cotton, hemp, cashmere) score high; thin synthetics or unknown materials score low.",
+    "versatility": "How many outfits and occasions it works for. Neutral colours and classic cuts score high; loud one-off pieces score low.",
+    "trend": "How current it feels for menswear right now. Relaxed fits, textured knits, workwear and earth tones score high; dated styles score low.",
+    "value": "Price relative to the material and construction. A fair price for the quality scores high; an expensive basic scores low. Sale prices count."
+  }
+}

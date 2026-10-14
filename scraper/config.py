@@ -24,6 +24,10 @@ class Config:
     db_file: Path
     out_dir: Path
     retailers: list
+    scoring: dict
+    llm_base_url: str
+    llm_model: str
+    llm_api_key: str
 
 
 def load() -> Config:
@@ -32,4 +36,8 @@ def load() -> Config:
         db_file=ROOT / "fashion.db",
         out_dir=ROOT / "out",
         retailers=json.loads((ROOT / "retailers.json").read_text(encoding="utf-8")),
+        scoring=json.loads((ROOT / "scoring.json").read_text(encoding="utf-8")),
+        llm_base_url=os.environ.get("LLM_BASE_URL", "http://localhost:11434/v1"),
+        llm_model=os.environ.get("LLM_MODEL", "qwen2.5:3b"),
+        llm_api_key=os.environ.get("LLM_API_KEY", "ollama"),
     )

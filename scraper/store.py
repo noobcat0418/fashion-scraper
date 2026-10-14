@@ -1,4 +1,5 @@
 """SQLite storage: products, one row per colourway, and price history across runs."""
+import json
 import sqlite3
 
 SCHEMA = """
@@ -57,6 +58,38 @@ class Store:
                 changed += prev is not None
         self.db.commit()
         return changed
+
+    def to_score(self, limit: int) -> list[dict]:
+        """Currently listed products that were never scored, or changed since they were scored."""
+        cur = self.db.execute(
+            """
+            SELECT p.retailer, p.product_id, p.title, p.category, p.materials, p.description, p.updated_at,
+                   MIN(r.price) AS price, r.currency, GROUP_CONCAT(NULLIF(r.colour, ''), ', ') AS colours
+            FROM products p JOIN rows r USING (retailer, product_id)
+            WHERE r.last_seen = (SELECT MAX(last_seen) FROM rows r2 WHERE r2.retailer = r.retailer)
+              AND (p.score_detail IS NULL OR p.scored_updated_at IS NOT p.updated_at)
+            GROUP BY p.retailer, p.product_id
+            ORDER BY p.last_seen DESC, p.title
+            LIMIT ?
+            """,
+            (limit,),
+        )
+        return [dict(r) for r in cur]
+
+    def save_score(self, retailer: str, product_id: str, detail: dict, total: float, updated_at: str) -> None:
+        self.db.execute(
+            "UPDATE products SET score = ?, score_detail = ?, scored_updated_at = ? WHERE retailer = ? AND product_id = ?",
+            (total, json.dumps(detail), updated_at, retailer, product_id),
+        )
+        self.db.commit()
+
+    def rescore(self, weigh) -> int:
+        """Recompute every weighted score from stored sub-scores, e.g. after scoring.json changes."""
+        rows = self.db.execute("SELECT retailer, product_id, score_detail FROM products WHERE score_detail IS NOT NULL")
+        updates = [(weigh(json.loads(d)), r, p) for r, p, d in rows.fetchall()]
+        self.db.executemany("UPDATE products SET score = ? WHERE retailer = ? AND product_id = ?", updates)
+        self.db.commit()
+        return len(updates)
 
     def board_rows(self) -> list[dict]:
         """Colourways listed in each retailer's latest scrape, with the previous price if it changed."""
